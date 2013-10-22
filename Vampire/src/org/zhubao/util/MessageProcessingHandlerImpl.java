@@ -5,8 +5,12 @@ package org.zhubao.util;
  */
 
 
-import org.zhubao.bean.ImageOutMessage;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.zhubao.bean.Articles;
 import org.zhubao.bean.InMessage;
+import org.zhubao.bean.NewsOutMessage;
 import org.zhubao.bean.OutMessage;
 import org.zhubao.bean.TextOutMessage;
 
@@ -28,9 +32,17 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
 	}
 
 	public OutMessage imageTypeMsg(InMessage msg) {
-		ImageOutMessage ims = new ImageOutMessage();
-		ims.setPicUrl(msg.getPicUrl());
-		return ims;
+		NewsOutMessage nms = new NewsOutMessage();
+		Articles article = new Articles();
+		List<Articles> list = new ArrayList<Articles>();
+		article.setUrl("http://shiguangji0307.ap01.aws.af.cm");
+		article.setDescription("Zhubao");
+		article.setPicUrl(msg.getPicUrl());
+		article.setTitle("Have a test");
+		list.add(article);
+		nms.setArticles(list);
+		nms.setArticleCount(1);
+		return nms;
 	}
 
 	public OutMessage linkTypeMsg(InMessage msg) {

@@ -87,7 +87,7 @@ public class WeChatFilter implements Filter {
 		String xmlMsg = Tools.inputStream2String(in);
 
 		logger.debug("Input Message:[" + xmlMsg + "]");
-        System.out.println("输入消息:[" + xmlMsg + "]");
+        System.out.println("Input:[" + xmlMsg + "]");
 		InMessage msg = (InMessage) xs.fromXML(xmlMsg);
 		System.out.println("Msg : "+msg );
 		// 获取自定消息处理器，如果自定义处理器则使用默认处理器。
@@ -102,6 +102,9 @@ public class WeChatFilter implements Filter {
 					.newInstance();
 			// 取得消息类型
 			String type = msg.getMsgType();
+			if(type.equals("image")){
+				msg.setMsgType("news");
+			}
 			Method mt = clazz.getMethod(type + "TypeMsg", InMessage.class);
 			oms = (OutMessage) mt.invoke(processingHandler, msg);
 			if (oms == null) {
@@ -127,8 +130,9 @@ public class WeChatFilter implements Filter {
 		String xml = xs.toXML(oms);
 
 		logger.debug("输出消息:[" + xml + "]");
-		 System.out.println("输出消息:[" + xml + "]");
+		 System.out.println("OutPut:[" + xml + "]");
 		response.getWriter().write(xml);
+		response.getWriter().flush();
 	}
 
 	private void doGet(HttpServletRequest request, HttpServletResponse response)
