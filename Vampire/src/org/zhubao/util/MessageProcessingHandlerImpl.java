@@ -10,9 +10,13 @@ import java.util.List;
 
 import org.zhubao.bean.Articles;
 import org.zhubao.bean.InMessage;
+import org.zhubao.bean.LocationMessage;
+import org.zhubao.bean.Music;
+import org.zhubao.bean.MusicOutMessage;
 import org.zhubao.bean.NewsOutMessage;
 import org.zhubao.bean.OutMessage;
 import org.zhubao.bean.TextOutMessage;
+import org.zhubao.bean.VoiceMessage;
 
 /**
  * 自定义实现消息处理
@@ -27,8 +31,12 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
 	}
 
 	public OutMessage locationTypeMsg(InMessage msg) {
-		// TODO Auto-generated method stub
-		return null;
+		LocationMessage lms = new LocationMessage();
+		lms.setLabel(msg.getLabel());
+		lms.setLocation_X(msg.getLocationX());
+		lms.setLocation_Y(msg.getLocationY());
+		lms.setScale(msg.getScale());
+		return lms;
 	}
 
 	public OutMessage imageTypeMsg(InMessage msg) {
@@ -56,8 +64,18 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
 	}
 
 	public OutMessage voiceTypeMsg(InMessage msg) {
-		// TODO Auto-generated method stub
-		return null;
+		VoiceMessage vms = new VoiceMessage();
+		vms.setMediaId(msg.getMediaId());
+		vms.setFormat(msg.getFormat());
+		return vms;
+	}
+
+	@Override
+	public OutMessage musicTypeMsg(InMessage msg) {
+		MusicOutMessage mms = new MusicOutMessage();
+		Music music = msg.getMusic();
+		mms.setMusic(music);
+		return mms;
 	}
 
 }

@@ -19,7 +19,7 @@ public class InMessage {
 	// 位置消息
 	private String LocationX;
 	private String LocationY;
-	private Long Scale;
+	private String Scale;
 	private String Label;
 	// 链接消息
 	private String Title;
@@ -33,6 +33,8 @@ public class InMessage {
 	private String Event;
 	private String EventKey;
 	private String Ticket;
+	
+	private Music music;
 
 	public String getToUserName() {
 		return ToUserName;
@@ -106,11 +108,11 @@ public class InMessage {
 		LocationY = locationY;
 	}
 
-	public Long getScale() {
+	public String getScale() {
 		return Scale;
 	}
 
-	public void setScale(Long scale) {
+	public void setScale(String scale) {
 		Scale = scale;
 	}
 
@@ -193,6 +195,15 @@ public class InMessage {
 	public void setTicket(String ticket) {
 		Ticket = ticket;
 	}
+	
+
+	public Music getMusic() {
+		return music;
+	}
+
+	public void setMusic(Music music) {
+		this.music = music;
+	}
 
 	@Override
 	public String toString() {
@@ -204,8 +215,11 @@ public class InMessage {
 				+ Label + ", Title=" + Title + ", Description=" + Description
 				+ ", Url=" + Url + ", MediaId=" + MediaId + ", Format="
 				+ Format + ", Recognition=" + Recognition + ", Event=" + Event
-				+ ", EventKey=" + EventKey + ", Ticket=" + Ticket + "]";
+				+ ", EventKey=" + EventKey + ", Ticket=" + Ticket + ", music="
+				+ music + "]";
 	}
+
+
 	
 	
 }

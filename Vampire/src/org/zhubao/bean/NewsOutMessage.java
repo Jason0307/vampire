@@ -1,8 +1,6 @@
 package org.zhubao.bean;
 /* 
- * jeasyPro
- * (c) 2012-2013 ____′↘夏悸 <wmails@126.cn>, MIT Licensed
- * http://www.jeasyuicn.com/
+ * (c) 2012-2013 MIT Licensed
  * 2013-8-11 下午3:32:55
  */
 

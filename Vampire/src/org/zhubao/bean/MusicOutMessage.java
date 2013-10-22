@@ -14,26 +14,23 @@ package org.zhubao.bean;
  */
 public class MusicOutMessage extends OutMessage {
 	private String	MsgType	= "music";
-	private String	MusicUrl;
-	private String	HQMusicUrl;
+	private Music Music;
 
 	public String getMsgType() {
 		return MsgType;
 	}
 
-	public String getMusicUrl() {
-		return MusicUrl;
+	public Music getMusic() {
+		return Music;
 	}
 
-	public void setMusicUrl(String musicUrl) {
-		MusicUrl = musicUrl;
+	public void setMusic(Music music) {
+		Music = music;
 	}
 
-	public String getHQMusicUrl() {
-		return HQMusicUrl;
+	public void setMsgType(String msgType) {
+		MsgType = msgType;
 	}
 
-	public void setHQMusicUrl(String hQMusicUrl) {
-		HQMusicUrl = hQMusicUrl;
-	}
+	
 }

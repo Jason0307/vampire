@@ -2,7 +2,6 @@ package org.zhubao.util;
 /**
  * 微信公众平台开发模式(JAVA) SDK
  * (c) 2012-2013  MIT Licensed
- * http://www.jeasyuicn.com/wechat
  */
 
 

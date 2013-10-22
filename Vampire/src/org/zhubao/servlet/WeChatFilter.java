@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.zhubao.bean.Articles;
 import org.zhubao.bean.InMessage;
+import org.zhubao.bean.Music;
 import org.zhubao.bean.OutMessage;
 import org.zhubao.bean.TextOutMessage;
 import org.zhubao.util.MessageProcessingHandler;
@@ -86,10 +87,11 @@ public class WeChatFilter implements Filter {
 		xs.alias("xml", InMessage.class);
 		String xmlMsg = Tools.inputStream2String(in);
 
-		logger.debug("Input Message:[" + xmlMsg + "]");
+		logger.info("Input Message:[" + xmlMsg + "]");
         System.out.println("Input:[" + xmlMsg + "]");
 		InMessage msg = (InMessage) xs.fromXML(xmlMsg);
 		System.out.println("Msg : "+msg );
+		String content = msg.getContent();
 		// 获取自定消息处理器，如果自定义处理器则使用默认处理器。
 		String handler = p.getProperty("MessageProcessingHandlerImpl");
 		if (handler == null)
@@ -127,9 +129,10 @@ public class WeChatFilter implements Filter {
 		xs = XStreamFactory.init(true);
 		xs.alias("xml", oms.getClass());
 		xs.alias("item", Articles.class);
+		xs.alias("music", Music.class);
 		String xml = xs.toXML(oms);
 
-		logger.debug("输出消息:[" + xml + "]");
+		logger.info("输出消息:[" + xml + "]");
 		 System.out.println("OutPut:[" + xml + "]");
 		response.getWriter().write(xml);
 		response.getWriter().flush();
