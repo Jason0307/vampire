@@ -81,4 +81,12 @@ public interface MessageProcessingHandler {
 	 * @return
 	 */
 	public OutMessage musicTypeMsg(InMessage msg);
+	
+	/**
+	 * 新闻类型的消息处理
+	 * 
+	 * @param msg
+	 * @return
+	 */
+	public OutMessage newsTypeMsg(InMessage msg);
 }

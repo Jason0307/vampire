@@ -1,16 +1,18 @@
 package org.zhubao.servlet;
+
 /**
  * 微信公众平台开发模式(JAVA) SDK
  * (c) 2012-2013MIT Licensed
  */
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.Date;
 import java.util.Properties;
 
@@ -25,6 +27,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.zhubao.bean.Articles;
 import org.zhubao.bean.InMessage;
 import org.zhubao.bean.Music;
@@ -88,15 +93,80 @@ public class WeChatFilter implements Filter {
 		String xmlMsg = Tools.inputStream2String(in);
 
 		logger.info("Input Message:[" + xmlMsg + "]");
-        System.out.println("Input:[" + xmlMsg + "]");
+		System.out.println("Input:[" + xmlMsg + "]");
 		InMessage msg = (InMessage) xs.fromXML(xmlMsg);
-		System.out.println("Msg : "+msg );
+		System.out.println("Msg : " + msg);
 		String content = msg.getContent();
 		// 获取自定消息处理器，如果自定义处理器则使用默认处理器。
 		String handler = p.getProperty("MessageProcessingHandlerImpl");
 		if (handler == null)
 			handler = defaultHandler;
 
+		String type = msg.getMsgType();
+		String event = msg.getEvent();
+		if (type.equals("event")) {
+			if (event.equals("subscribe")) {// 此为关注事件
+				content = "您好，欢迎关注我！";
+			}
+			oms = initTextMessage(msg, content);
+		} else if (type.equals("text")) {
+			if (content.equals("help") || content.equals("帮助")
+					|| content.equals("?") || content.equals("？")) {
+				content = "帮助中心\n\n";
+			} else if (content.equals("bind") || content.equals("绑定")) {
+				content = "点击 <a target=\"_blank\" href=\"\'\'\">绑定账户</a>";
+			}else if(content.equals("新闻")){
+				    URL newsurl = new URL("http://news.baidu.com/ns?word=title%3A%B2%FA%BF%C6%CA%C2%B9%CA&tn=newsrss&sr=0&cl=2&rn=20&ct=0");  
+	                System.out.println("Work 1");
+				    InputStream news=newsurl.openStream();  
+				    System.out.println("Work 2");
+	                SAXReader newsReader = new SAXReader();  
+	                Document newsdocument = null;
+					try {
+						newsdocument = newsReader.read(news);
+						   System.out.println("Work 3");
+					} catch (DocumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}  
+					   System.out.println("Work 4" + newsdocument.toString());
+	                content = newsdocument.selectSingleNode("/rss/channel/item[1]/title").getText();
+	                System.out.println("Work 5"+content);
+			}
+			oms = initTextMessage(msg, content);
+		} else if (type.equals("image")) {
+			msg.setMsgType("news");
+			oms = initMessage(msg, handler);
+		}else{
+			oms = initMessage(msg, handler);
+		}
+		// 把发送发送对象转换为xml输出
+		xs = XStreamFactory.init(true);
+		xs.alias("xml", oms.getClass());
+		xs.alias("item", Articles.class);
+		xs.alias("music", Music.class);
+		String xml = xs.toXML(oms);
+
+		logger.info("输出消息:[" + xml + "]");
+		System.out.println("OutPut:[" + xml + "]");
+		response.getWriter().write(xml);
+		response.getWriter().flush();
+	}
+
+	private OutMessage initTextMessage(InMessage msg, String content) {
+		OutMessage oms;
+		oms = new TextOutMessage();
+		((TextOutMessage) oms).setContent(content);
+		((TextOutMessage) oms).setMsgType("text");
+		try {
+			setMsgInfo(oms, msg);
+		} catch (Exception e) {
+		}
+		return oms;
+	}
+
+	private OutMessage initMessage(InMessage msg, String handler) {
+		OutMessage oms;
 		try {
 			// 加载处理器
 			Class<?> clazz = Class.forName(handler);
@@ -104,9 +174,6 @@ public class WeChatFilter implements Filter {
 					.newInstance();
 			// 取得消息类型
 			String type = msg.getMsgType();
-			if(type.equals("image")){
-				msg.setMsgType("news");
-			}
 			Method mt = clazz.getMethod(type + "TypeMsg", InMessage.class);
 			oms = (OutMessage) mt.invoke(processingHandler, msg);
 			if (oms == null) {
@@ -124,18 +191,7 @@ public class WeChatFilter implements Filter {
 				logger.error(e);
 			}
 		}
-
-		// 把发送发送对象转换为xml输出
-		xs = XStreamFactory.init(true);
-		xs.alias("xml", oms.getClass());
-		xs.alias("item", Articles.class);
-		xs.alias("music", Music.class);
-		String xml = xs.toXML(oms);
-
-		logger.info("输出消息:[" + xml + "]");
-		 System.out.println("OutPut:[" + xml + "]");
-		response.getWriter().write(xml);
-		response.getWriter().flush();
+		return oms;
 	}
 
 	private void doGet(HttpServletRequest request, HttpServletResponse response)

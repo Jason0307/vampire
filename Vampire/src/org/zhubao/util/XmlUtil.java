@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;  
 import java.util.Map;  
   
+
 import org.jdom.Attribute;  
 import org.jdom.Document;  
 import org.jdom.Element;  
@@ -38,10 +39,11 @@ public class XmlUtil {
      * @param lastname 
      *            从根节点到上一级节点名称连接的字串 
      */  
-    public static void convert(Element e, Map<String, String> map,  
+    @SuppressWarnings("unchecked")
+	public static void convert(Element e, Map<String, String> map,  
             String lastname) {  
         if (e.getAttributes().size() > 0) {  
-            Iterator it_attr = e.getAttributes().iterator();  
+            Iterator<Attribute> it_attr = e.getAttributes().iterator();  
             while (it_attr.hasNext()) {  
                 Attribute attribute = (Attribute) it_attr.next();  
                 String attrname = attribute.getName();  
@@ -49,8 +51,8 @@ public class XmlUtil {
                 map.put(lastname + "." + attrname, attrvalue);  
             }  
         }  
-        List children = e.getChildren();  
-        Iterator it = children.iterator();  
+        List<Element> children = e.getChildren();  
+        Iterator<Element> it = children.iterator();  
         while (it.hasNext()) {  
             Element child = (Element) it.next();  
             String name = lastname + "." + child.getName();  
@@ -62,7 +64,7 @@ public class XmlUtil {
                 map.put(name, child.getText());  
                 // 如果该节点有属性，则把所有的属性值也加入map  
                 if (child.getAttributes().size() > 0) {  
-                    Iterator attr = child.getAttributes().iterator();  
+                    Iterator<Attribute> attr = child.getAttributes().iterator();  
                     while (attr.hasNext()) {  
                         Attribute attribute = (Attribute) attr.next();  
                         String attrname = attribute.getName();  

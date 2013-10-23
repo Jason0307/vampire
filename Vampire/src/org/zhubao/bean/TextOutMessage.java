@@ -25,6 +25,10 @@ public class TextOutMessage extends OutMessage {
 		return MsgType;
 	}
 
+	public void setMsgType(String msgType) {
+		MsgType = msgType;
+	}
+
 	public String getContent() {
 		return Content;
 	}

@@ -78,4 +78,19 @@ public class MessageProcessingHandlerImpl implements MessageProcessingHandler {
 		return mms;
 	}
 
+	@Override
+	public OutMessage newsTypeMsg(InMessage msg) {
+		NewsOutMessage nms = new NewsOutMessage();
+		Articles article = new Articles();
+		List<Articles> list = new ArrayList<Articles>();
+		article.setUrl("http://shiguangji0307.ap01.aws.af.cm");
+		article.setDescription("Zhubao");
+		article.setPicUrl(msg.getPicUrl());
+		article.setTitle("Have a test");
+		list.add(article);
+		nms.setArticles(list);
+		nms.setArticleCount(1);
+		return nms;
+	}
+
 }
