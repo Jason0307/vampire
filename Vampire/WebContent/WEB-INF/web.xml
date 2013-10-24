@@ -4,16 +4,15 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!--  <servlet>
-		<servlet-name>wechat</servlet-name>
-		<servlet-class>org.zhubao.servlet.WeChatServlet</servlet-class>
-	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>wechat</servlet-name>
-		<url-pattern>/WeChat</url-pattern>
-	</servlet-mapping>-->
-	
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring/*.xml
+		</param-value>
+	</context-param>
+
 	<filter>
 		<filter-name>WeChatFilter</filter-name>
 		<filter-class>org.zhubao.servlet.WeChatFilter</filter-class>
@@ -23,6 +22,31 @@
 		<url-pattern>/wechat/*</url-pattern>
 	</filter-mapping>
 
+
+	<servlet>
+		<servlet-name>rest</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+            /WEB-INF/spring/*.xml
+        </param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>rest</servlet-name>
+		<url-pattern>/dashboard/*</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/spring/*.xml
+        </param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

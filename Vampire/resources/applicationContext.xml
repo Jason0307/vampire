@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	<context:component-scan base-package="org.zhubao">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+    <context:annotation-config />
+    
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"    destroy-method="close">
+          <property name="driverClass"><value>${jdbc.driverClassName}</value></property>
+          <property name="jdbcUrl"><value>${jdbc.url}</value></property>               
+          <property name="user"><value>${jdbc.username}</value></property>
+          <property name="password"><value>${jdbc.password}</value></property>
+          
+          <property name="minPoolSize"><value>10</value></property>
+          <property name="maxPoolSize"><value>30</value></property>
+          <property name="maxIdleTime"><value>1800</value></property>
+          <property name="acquireIncrement"><value>2</value></property>
+          <property name="maxStatements"><value>0</value></property>
+          <property name="initialPoolSize"><value>2</value></property>
+          <property name="idleConnectionTestPeriod"><value>1800</value></property>
+          <property name="acquireRetryAttempts"><value>30</value></property>
+          <property name="breakAfterAcquireFailure"><value>true</value></property>
+          <property name="testConnectionOnCheckout"><value>false</value></property>
+         
+          <!-- 
+             <property name="properties">
+           <props>              
+               <prop key="c3p0.minPoolSize">1</prop> 
+               <prop key="c3p0.maxPoolSize">10</prop> 
+               <prop key="c3p0.maxIdleTime">1800</prop>              
+               <prop key="c3p0.acquireIncrement">2</prop> 
+               <prop key="c3p0.maxStatements">0</prop> 
+                     <prop key="c3p0.initialPoolSize">2</prop>
+               <prop key="c3p0.idleConnectionTestPeriod">1800</prop>
+               <prop key="c3p0.acquireRetryAttempts">30</prop>
+               <prop key="c3p0.breakAfterAcquireFailure">true</prop>
+               <prop key="c3p0.testConnectionOnCheckout">true</prop>
+               <prop key="user">root</prop>
+               <prop key="password">999999</prop>
+              
+           </props>
+          </property>
+         -->      
+</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>org.zhubao.model</value>
+
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext  
+                </prop> 
+			</props>
+		</property>
+	</bean>
+	<aop:aspectj-autoproxy />
+ 	<bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+  		<property name="sessionFactory" ref="sessionFactory" />
+ 	</bean>
+	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="create*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="merge*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="put*" propagation="REQUIRED" />
+            <tx:method name="use*" propagation="REQUIRED"/>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="txPointcut" expression="execution(* org.zhubao..dao..*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+
+</beans>

@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"> 
+    <hibernate-configuration> 
+      <session-factory>    
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver </property> 
+        <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/ad_8d75af3c975c83c</property> 
+        <property name="hibernate.connection.username">b7bff3ae1a62e2</property> 
+        <property name="hibernate.connection.password">f0cfe253</property>        
+        <property name="hibernate.connection.pool.size">20</property>        
+        <property name="hibernate.show_sql">true</property> 
+        <property name="jdbc.fetch_size">50</property> 
+        <property name="jdbc.batch_size">23</property> 
+        <property name="jdbc.use_scrollable_resultset">false</property> 
+        <property name="connection.useUnicode">true</property> 
+        <property name="connection.characterEncoding">utf-8</property>    
+        <property name="current_session_context_class">thread</property>  
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+        
+           <mapping class="org.zhubao.model.Message"/> 
+           <mapping class="org.zhubao.model.ImageMessage"/> 
+           <mapping class="org.zhubao.model.LinkMessage"/> 
+           <mapping class="org.zhubao.model.VoiceMessage"/> 
+           <mapping class="org.zhubao.model.LocationMessage"/> 
+           <mapping class="org.zhubao.model.TextMessage"/> 
+           <mapping class="org.zhubao.model.EventMessage"/>
+          
+  </session-factory> 
+  </hibernate-configuration>   

@@ -35,6 +35,7 @@ import org.zhubao.bean.InMessage;
 import org.zhubao.bean.Music;
 import org.zhubao.bean.OutMessage;
 import org.zhubao.bean.TextOutMessage;
+import org.zhubao.model.TextMessage;
 import org.zhubao.util.MessageProcessingHandler;
 import org.zhubao.util.Tools;
 import org.zhubao.util.XStreamFactory;
@@ -55,6 +56,7 @@ public class WeChatFilter implements Filter {
 	private String defaultHandler = "com.gson.inf.DefaultMessageProcessingHandlerImpl";
 	private Properties p;
 
+//	private MessageService messageService = (MessageService) BeanUtil.getBean("messageService");
 	public void destroy() {
 		logger.info("WeChatFilter已经销毁");
 	}
@@ -75,13 +77,16 @@ public class WeChatFilter implements Filter {
 			if (isGet) {
 				doGet(request, response);
 			} else {
-				doPost(request, response);
+				try {
+					doPost(request, response);
+				} catch (Exception e) {
+				}
 			}
 		}
 	}
 
 	private void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/xml");
 
@@ -92,7 +97,6 @@ public class WeChatFilter implements Filter {
 		xs.alias("xml", InMessage.class);
 		String xmlMsg = Tools.inputStream2String(in);
 
-		logger.info("Input Message:[" + xmlMsg + "]");
 		System.out.println("Input:[" + xmlMsg + "]");
 		InMessage msg = (InMessage) xs.fromXML(xmlMsg);
 		System.out.println("Msg : " + msg);
@@ -117,23 +121,28 @@ public class WeChatFilter implements Filter {
 				content = "点击 <a target=\"_blank\" href=\"\'\'\">绑定账户</a>";
 			}else if(content.equals("新闻")){
 				    URL newsurl = new URL("http://news.baidu.com/ns?word=title%3A%B2%FA%BF%C6%CA%C2%B9%CA&tn=newsrss&sr=0&cl=2&rn=20&ct=0");  
-	                System.out.println("Work 1");
 				    InputStream news=newsurl.openStream();  
-				    System.out.println("Work 2");
 	                SAXReader newsReader = new SAXReader();  
 	                Document newsdocument = null;
 					try {
 						newsdocument = newsReader.read(news);
-						   System.out.println("Work 3");
 					} catch (DocumentException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}  
-					   System.out.println("Work 4" + newsdocument.toString());
-	                content = newsdocument.selectSingleNode("/rss/channel/item[1]/title").getText();
-	                System.out.println("Work 5"+content);
+					 
+	                content = newsdocument.selectSingleNode("/rss/channel/item[3]/description").getText();
 			}
 			oms = initTextMessage(msg, content);
+			TextMessage tms = new TextMessage();
+			tms.setContent(content);
+			tms.setCreatedDate(oms.getCreateTime());
+			tms.setFuncFlag(oms.getFuncFlag());
+			tms.setOpenId(oms.getFromUserName());
+			tms.setMsgId(msg.getMsgId());
+			System.out.println(tms);
+			//System.out.println(messageService);
+			//messageService.save(tms);
+			System.out.println("1234");
 		} else if (type.equals("image")) {
 			msg.setMsgType("news");
 			oms = initMessage(msg, handler);
@@ -147,7 +156,6 @@ public class WeChatFilter implements Filter {
 		xs.alias("music", Music.class);
 		String xml = xs.toXML(oms);
 
-		logger.info("输出消息:[" + xml + "]");
 		System.out.println("OutPut:[" + xml + "]");
 		response.getWriter().write(xml);
 		response.getWriter().flush();
@@ -244,6 +252,7 @@ public class WeChatFilter implements Filter {
 				logger.error("wechat.properties读取异常", e);
 			}
 		}
+		
 		logger.info("WeChatFilter已经启动！");
 	}
 
