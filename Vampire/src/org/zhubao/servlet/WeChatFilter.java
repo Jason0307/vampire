@@ -36,6 +36,8 @@ import org.zhubao.bean.Music;
 import org.zhubao.bean.OutMessage;
 import org.zhubao.bean.TextOutMessage;
 import org.zhubao.model.TextMessage;
+import org.zhubao.service.MessageService;
+import org.zhubao.util.BeanUtil;
 import org.zhubao.util.MessageProcessingHandler;
 import org.zhubao.util.Tools;
 import org.zhubao.util.XStreamFactory;
@@ -53,10 +55,9 @@ public class WeChatFilter implements Filter {
 	private final Logger logger = Logger.getLogger(WeChatFilter.class);
 	private String _token;
 	private String conf = "classPath:wechat.properties";
-	private String defaultHandler = "com.gson.inf.DefaultMessageProcessingHandlerImpl";
+	private String defaultHandler = "org.zhubao.util.DefaultMessageProcessingHandlerImpl";
 	private Properties p;
 
-//	private MessageService messageService = (MessageService) BeanUtil.getBean("messageService");
 	public void destroy() {
 		logger.info("WeChatFilter已经销毁");
 	}
@@ -89,9 +90,10 @@ public class WeChatFilter implements Filter {
 			throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/xml");
-
+		request.setCharacterEncoding("UTF-8");
 		OutMessage oms = new OutMessage();
 		ServletInputStream in = request.getInputStream();
+		
 		// 转换微信post过来的xml内容
 		XStream xs = XStreamFactory.init(false);
 		xs.alias("xml", InMessage.class);
@@ -135,13 +137,17 @@ public class WeChatFilter implements Filter {
 			oms = initTextMessage(msg, content);
 			TextMessage tms = new TextMessage();
 			tms.setContent(content);
+			System.out.println("Content: "+content);
+			System.out.println("ISO8859: "+new String(content.getBytes("ISO-8859-1"), "UTF-8"));
+			System.out.println("GBK: "+new String(content.getBytes("GBK"), "UTF-8"));
 			tms.setCreatedDate(oms.getCreateTime());
 			tms.setFuncFlag(oms.getFuncFlag());
 			tms.setOpenId(oms.getFromUserName());
 			tms.setMsgId(msg.getMsgId());
 			System.out.println(tms);
-			//System.out.println(messageService);
-			//messageService.save(tms);
+			MessageService messageService = (MessageService) BeanUtil.getBean("messageServiceImpl");
+			System.out.println(messageService);
+			messageService.save(tms);
 			System.out.println("1234");
 		} else if (type.equals("image")) {
 			msg.setMsgType("news");

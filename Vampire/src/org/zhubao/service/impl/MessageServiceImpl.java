@@ -6,7 +6,7 @@ import org.zhubao.dao.MessageDAO;
 import org.zhubao.model.Message;
 import org.zhubao.service.MessageService;
 
-@Service
+@Service("messageServiceImpl")
 public class MessageServiceImpl extends BaseServiceImpl<Message> implements
 		MessageService {
 

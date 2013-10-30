@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zhubao.model.TextMessage;
+import org.zhubao.util.BeanUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = "classpath:applicationContext.xml")  
 public class MessageServiceTest {
 
-	@Autowired
-	private MessageService messageService;
+	//@Autowired
+	private MessageService messageService = (MessageService) BeanUtil.getBean("messageServiceImpl");
 	
 	@Test
 	public void save() throws Exception{
