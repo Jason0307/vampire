@@ -131,3 +131,6 @@ body {
 	background: #27AE60;
 	color: white;
 }
+.control-group.error .help-inline {
+color: #b94a48;
+}
