@@ -31,7 +31,7 @@
         <div class="form-search">
 		    
             <form id="form-search" method="post">
-              <input type="text" value="Type here..." onBlur="if(this.value=='') this.value='Type here...'" onFocus="if(this.value =='Type here...' ) this.value=''"  />
+              <input type="text" value="${_LOGIN_USER.address}" onBlur="if(this.value=='') this.value='Type here...'" onFocus="if(this.value =='Type here...' ) this.value=''"  />
               <a href="#" onClick="document.getElementById('form-search').submit()" class="search_button"></a>
             </form>
         </div>   

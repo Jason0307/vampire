@@ -19,7 +19,7 @@ public class DashboardController {
 	@RequestMapping(value = {"/index","/"},method = RequestMethod.GET)
 	public String dashboard(){
 		
-		return "main";
+		return "index";
 	}
 	
 }

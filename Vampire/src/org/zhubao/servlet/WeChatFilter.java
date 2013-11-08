@@ -90,7 +90,7 @@ public class WeChatFilter implements Filter {
 			throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/xml");
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		OutMessage oms = new OutMessage();
 		ServletInputStream in = request.getInputStream();
 		

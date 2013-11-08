@@ -29,8 +29,10 @@ public class UserController {
 	private Logger log = Logger.getLogger(UserController.class);
 
 	@RequestMapping(value = "/user/register",method = RequestMethod.POST)
-	public String register(String cpass,String address,@Valid User user,BindingResult br,Model model){
-		System.out.println(address);
+	public String register(String cpass,String address,@Valid User user,BindingResult br,Model model) throws Exception{
+		System.out.println("ISO8859: "+new String(address.getBytes("ISO-8859-1"), "UTF-8"));
+		System.out.println("GBK: "+new String(address.getBytes("GBK"), "UTF-8"));
+		System.out.println("Address :"+address);
 		System.out.println("User : "+user);
 		if(br.hasErrors()){
 			System.out.println("error");
