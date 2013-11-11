@@ -1,0 +1,17 @@
+2013-10-31 15:05:03,062-[TS] INFO main org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+2013-10-31 15:05:03,250-[TS] INFO main org.hibernate.Version - HHH000412: Hibernate Core {4.2.0.Final}
+2013-10-31 15:05:03,343-[TS] INFO main org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2013-10-31 15:05:03,375-[TS] INFO main org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2013-10-31 15:05:04,187-[TS] INFO main org.hibernate.cfg.Configuration - HHH000043: Configuring from resource: hibernate.xml
+2013-10-31 15:05:04,187-[TS] INFO main org.hibernate.cfg.Configuration - HHH000040: Configuration resource: hibernate.xml
+2013-10-31 15:05:07,078-[TS] WARN main org.hibernate.internal.util.xml.DTDEntityResolver - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2013-10-31 15:05:07,515-[TS] INFO main org.hibernate.cfg.Configuration - HHH000041: Configured SessionFactory: null
+2013-10-31 15:05:08,140-[TS] INFO main org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2013-10-31 15:05:11,312-[TS] INFO main org.hibernate.tool.hbm2ddl.SchemaExport - HHH000227: Running hbm2ddl schema export
+2013-10-31 15:05:11,906-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2013-10-31 15:05:12,171-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20
+2013-10-31 15:05:12,171-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000006: Autocommit mode: false
+2013-10-31 15:05:12,171-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/ad_8d75af3c975c83c]
+2013-10-31 15:05:12,187-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000046: Connection properties: {useUnicode=true, user=b7bff3ae1a62e2, password=****, characterEncoding=utf-8, pool.size=20}
+2013-10-31 15:05:25,406-[TS] INFO main org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000030: Cleaning up connection pool [jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/ad_8d75af3c975c83c]
+2013-10-31 15:05:25,406-[TS] INFO main org.hibernate.tool.hbm2ddl.SchemaExport - HHH000230: Schema export complete

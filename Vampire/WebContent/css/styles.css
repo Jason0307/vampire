@@ -917,7 +917,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 .flex-control-nav li:first-child {margin: 0;}
 .flex-control-nav li a {width: 27px; height: 13px; display: block; background: url('../images/bullet.png') no-repeat 0 0; cursor: pointer; text-indent: -9999px;}
 .flex-control-nav li a:hover {width: 27px; height: 13px; display: block; background: url('../images/bullet-hover.png')}
-.flex-control-nav li a.active {width: 27px; height: 13px; display: block; background: url('./images/bullet-hover.png')}
+.flex-control-nav li a.active {width: 27px; height: 13px; display: block; background: url('../images/bullet-hover.png')}
  h1 .label, h3 .label { font-size:inherit; border-radius: 0px !important; background-color: #7daf27;}
  .dash {border: 1px dashed;color: #666666;margin-bottom: 10px;margin-top: 10px;}
 

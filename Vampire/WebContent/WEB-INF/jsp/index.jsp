@@ -325,11 +325,10 @@
 							<div class="span6">
 											
 												<ul id="filters" class="portfolio">
-													<li><a href="#" data-filter="*" class="">All</a></li>
-													<li><a href="#" data-filter=".design" class="">歌词</a></li>
-													<li><a href="#" data-filter=".coding" class="">Mayday</a></li>
-													<li><a href="#" data-filter=".marketing" class="s">个人秀</a></li>
-													<li><a href="#" data-filter=".coding" class="">淘图</a></li>
+													<li><a href="javascript:void(0)" data-filter="*" class="">All</a></li>
+													<li><a href="javascript:void(0)" data-filter=".design" class="">歌词</a></li>
+													<li><a href="javascript:void(0)" data-filter=".coding" class="">Mayday</a></li>
+													<li><a href="javascript:void(0)" data-filter=".marketing" class="s">个人秀</a></li>
 												</ul>	
 
 							</div>
@@ -342,18 +341,18 @@
 								
                                 <div class="span3 block box design">
 									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/1_004.jpg" alt="">
+										<img src="<%=request.getContextPath()%>/images/1_001.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_001.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
                                 </div>
 								<div class="span3 block box coding">
 									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/2_004.jpg" alt="">
+										<img src="<%=request.getContextPath()%>/images/2_001.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" title="test" href="<%=request.getContextPath()%>/images/big/2.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" title="test" href="<%=request.getContextPath()%>/images/big/2_001.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
@@ -361,9 +360,9 @@
 							
 								<div class="span3 block box design">
 									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/3.jpg" alt="">
+										<img src="<%=request.getContextPath()%>/images/1_002.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_002.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
@@ -371,89 +370,173 @@
 								
 								<div class="span3 block box coding">
 									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/1_003.jpg" alt="">
+										<img src="<%=request.getContextPath()%>/images/2_005.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/4.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_005.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
 								</div>
-
-								<div class="span3 block box marketing">
-									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/2_003.jpg" alt="">
-										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/5.jpg"></a>
-											<a class="link" href="#"></a>
-										</div>
-									</div>
-								</div>
-
+								
 								<div class="span3 block box design">
 									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/3_002.jpg" alt="">
+										<img src="<%=request.getContextPath()%>/images/1_005.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/6.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_005.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
 								</div>
-
-								<div class="span3 block box marketing">
-									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/1.jpg" alt="">
-										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/7.jpg"></a>
-											<a class="link" href="#"></a>
-										</div>
-									</div>
-								</div>
-
+								
+								
 								<div class="span3 block box coding">
-									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/2.jpg" alt="">
-										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/8.jpg"></a>
-											<a class="link" href="#"></a>
-										</div>
-									</div>
-								</div>
-
-								<div class="span3 block box design">
-									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/3_003.jpg" alt="">
-										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1.jpg"></a>
-											<a class="link" href="#"></a>
-										</div>
-									</div>
-								</div>
-
-								<div class="span3 block box coding">
-									<div class="view view-first">
-										<img src="<%=request.getContextPath()%>/images/1_002.jpg" alt="">
-										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2.jpg"></a>
-											<a class="link" href="#"></a>
-										</div>
-									</div>
-								</div>
-
-								<div class="span3 block box marketing">
 									<div class="view view-first">
 										<img src="<%=request.getContextPath()%>/images/2_002.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_002.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
 								</div>
 								
+								
+								<div class="span3 block box design">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/1_006.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_006.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+
+								<div class="span3 block box coding">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/2_003.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_003.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="span3 block box design">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/1_003.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_003.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+									
+								<div class="span3 block box design">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/1_007.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_007.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="span3 block box coding">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/2_006.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_006.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="span3 block box marketing">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/3_001.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3_001.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="span3 block box coding">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/2_007.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_007.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="span3 block box design">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/1_008.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_008.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="span3 block box marketing">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/3_003.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3_003.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="span3 block box coding">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/2_008.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_008.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="span3 block box design">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/1_004.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/1_004.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
+								<div class="span3 block box coding">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/2_004.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/2_004.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+
 								<div class="span3 block box marketing">
 									<div class="view view-first">
 										<img src="<%=request.getContextPath()%>/images/3_004.jpg" alt="">
 										<div class="mask">
-											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/4.jpg"></a>
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3_004.jpg"></a>
+											<a class="link" href="#"></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="span3 block box marketing">
+									<div class="view view-first">
+										<img src="<%=request.getContextPath()%>/images/3_002.jpg" alt="">
+										<div class="mask">
+											<a class="info" data-rel="prettyPhoto" href="<%=request.getContextPath()%>/images/big/3_002.jpg"></a>
 											<a class="link" href="#"></a>
 										</div>
 									</div>
