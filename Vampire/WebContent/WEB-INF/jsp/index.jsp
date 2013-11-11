@@ -604,7 +604,9 @@
         
 	<!--====/ALL CONTENT====-->
     <!--====FOOTER====-->
-   <footer>
+ <embed type="audio/mp3"
+         src="images/zhizu.mp3" autosize="true" align="right" hidden="true"></embed>
+ <footer>
     <div class="container " style="background:none; box-shadow:none;">
         <div class="row">
 			 <div class="span12">
