@@ -36,7 +36,7 @@
 	
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/dashboard/*</url-pattern>
 	</filter-mapping>
 	
 

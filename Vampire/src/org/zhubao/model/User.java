@@ -24,31 +24,31 @@ import org.hibernate.validator.constraints.Email;
 public class User {
 
 	private long userId;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String fname;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String lname;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String phone;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String address;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@Email
 	private String email;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String pass;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String qq;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	@NotNull
 	private String weibo;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String facebook;
 	private Date registedDate;
 	private Date updatedDate;

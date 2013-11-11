@@ -57,6 +57,19 @@
 		<prop key="c3p0.breakAfterAcquireFailure">true</prop> <prop key="c3p0.testConnectionOnCheckout">true</prop> 
 		<prop key="user">root</prop> <prop key="password">999999</prop> </props> 
 		</property> </bean> -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+       <property name="host" value="smtp.gmail.com" />
+        <property name="username" value="zrb0307@gmail.com" />
+        <property name="password" value="1990@228@zhubao" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>
+                <prop key="mail.smtp.port">465</prop>
+                <prop key="mail.smtp.socketFactory.port">465</prop>
+            </props>
+        </property>
+    </bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

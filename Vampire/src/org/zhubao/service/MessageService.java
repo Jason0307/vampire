@@ -9,4 +9,5 @@ import org.zhubao.model.Message;
  */
 public interface MessageService extends BaseService<Message> {
 
+	
 }

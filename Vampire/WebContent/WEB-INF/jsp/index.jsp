@@ -95,7 +95,7 @@
                                     <img src="<%=request.getContextPath()%>/images/slide4.jpg">
                                 </li>
                             </ul>
-                        <ol class="flex-control-nav"><li><a class="active">1</a></li><li><a class="">2</a></li><li><a class="">3</a></li><li><a class="">4</a></li></ol></div>
+                      </div>
                     </div>
                  <!--====/HOME====-->
 				
@@ -326,10 +326,10 @@
 											
 												<ul id="filters" class="portfolio">
 													<li><a href="#" data-filter="*" class="">All</a></li>
-													<li><a href="#" data-filter=".design" class="">Design</a></li>
-													<li><a href="#" data-filter=".coding" class="">Coding</a></li>
-													<li><a href="#" data-filter=".marketing" class="s">Wordpress</a></li>
-													<li><a href="#" data-filter=".coding" class="">Redesign</a></li>
+													<li><a href="#" data-filter=".design" class="">歌词</a></li>
+													<li><a href="#" data-filter=".coding" class="">Mayday</a></li>
+													<li><a href="#" data-filter=".marketing" class="s">个人秀</a></li>
+													<li><a href="#" data-filter=".coding" class="">淘图</a></li>
 												</ul>	
 
 							</div>
@@ -499,12 +499,12 @@
 								<div class="span4">
 									<h3>...Drop Some Line's...</h3>
 									<div id="note"></div>
-									<form class="form" id="ajax-contact-form" action="javascript:alert('Was send!');">
-										<input name="name" class="span4" style="margin-right:25px;" placeholder="Name" type="text">
-										<input class="span4" name="email" placeholder="Email">
-										<textarea type="text" name="message" placeholder="Message" rows="8" class="span4"></textarea>
-										<button type="submit" class="btn btn-success">Send message</button>
-									</form>
+							            <form class="form"> 
+										<input name="name" id="name" class="span4" style="margin-right:25px;" placeholder="Name" type="text">
+										<input class="span4" name="email" id="email" placeholder="Email">
+										<textarea name="message" id="message" placeholder="Message" rows="8" class="span4"></textarea>
+										<a class="btn btn-success sendEmail">Send message</a>
+							            </form>
 								</div>
 								<div class="span4">
 									<h3>...I Am Here...</h3>
@@ -557,6 +557,7 @@
 	<script src="<%=request.getContextPath()%>/js/jquery.gmap.js"></script>
 	<script src="<%=request.getContextPath()%>/js/jquery.isotope.min.js"></script>
 	<script src="<%=request.getContextPath()%>/js/jquery.prettyPhoto.js"></script>
+	<script src="<%=request.getContextPath()%>/js/tool.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=4b5fbfe0242cfc931957f53719f6a098&v=1.0&services=false"></script> 
     <script type="text/javascript" src="http://api.map.baidu.com/getscript?key=4b5fbfe0242cfc931957f53719f6a098&v=1.0&services=false"></script> 
     <script type="text/javascript">

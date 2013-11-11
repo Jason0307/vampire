@@ -25,6 +25,7 @@
            <mapping class="org.zhubao.model.TextMessage"/> 
            <mapping class="org.zhubao.model.EventMessage"/>
            <mapping class="org.zhubao.model.User"/>
+            <mapping class="org.zhubao.model.UserLine"/>
           
   </session-factory> 
   </hibernate-configuration>   

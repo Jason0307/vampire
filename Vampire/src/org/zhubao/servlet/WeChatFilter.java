@@ -88,6 +88,7 @@ public class WeChatFilter implements Filter {
 
 	private void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		System.out.println("Filter Post");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/xml");
 		//request.setCharacterEncoding("UTF-8");
@@ -210,6 +211,7 @@ public class WeChatFilter implements Filter {
 
 	private void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
+		System.out.println("Filter Get");
 		String signature = request.getParameter("signature");// 微信加密签名
 		String timestamp = request.getParameter("timestamp");// 时间戳
 		String nonce = request.getParameter("nonce");// 随机数
