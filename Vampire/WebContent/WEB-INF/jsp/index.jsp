@@ -26,9 +26,10 @@
 	<link href="<%=request.getContextPath()%>/css/bebasneue.css" rel="stylesheet">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome.css">
 	<link href="<%=request.getContextPath()%>/css/prettify.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/texgyreadventor.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/Open-Sans-Light.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/audio.css">
    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,11 +45,21 @@
     <!--====HEADER====-->
     <header>
     	<div class="container" style="background:none; box-shadow:none;">
+    	<!-- ====Media Player==== -->			
+                     <div id="myAudio" style="float:right;padding-top:10px">
+		            	<audio>
+		            	    <source title="五月天 - 知足.mp3" src="<%=request.getContextPath()%>/music/zhizu.mp3"></source>
+			             	<source title="刘若英 - 后来.mp3" src="<%=request.getContextPath()%>/music/houlai.mp3"></source>
+			             	<source title="五月天- 拥抱.mp3" src="<%=request.getContextPath()%>/music/hug.mp3"></source>
+			             	<source title="五月天- 你不是真正的快乐.mp3" src="<%=request.getContextPath()%>/music/notreallyhappy.mp3"></source>
+			           </audio>
+		            </div>	
             <div class="row">
-                <div class="span12">
+                <div style="padding-left:340px">
 					<h1 class="intro">Jason Zhu</h1>
 					<h4 class="intro">I am Coder <span class="colored">&amp;</span> Monkey For Game Backend</h4>
 				</div>
+				
 				</div>
     <!--====NAVIGATION====-->			
 			<div class="row">
@@ -604,8 +615,7 @@
         
 	<!--====/ALL CONTENT====-->
     <!--====FOOTER====-->
- <embed type="audio/mp3"
-         src="images/zhizu.mp3" autosize="true" align="right" hidden="true"></embed>
+    
  <footer>
     <div class="container " style="background:none; box-shadow:none;">
         <div class="row">
@@ -643,10 +653,12 @@
 	<script src="<%=request.getContextPath()%>/js/jquery.isotope.min.js"></script>
 	<script src="<%=request.getContextPath()%>/js/jquery.prettyPhoto.js"></script>
 	<script src="<%=request.getContextPath()%>/js/tool.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/AudioPlayer.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=4b5fbfe0242cfc931957f53719f6a098&v=1.0&services=false"></script> 
     <script type="text/javascript" src="http://api.map.baidu.com/getscript?key=4b5fbfe0242cfc931957f53719f6a098&v=1.0&services=false"></script> 
     <script type="text/javascript">
-		/**
+		  jQuery("#myAudio").initAudio();
+       /**
 		 * Map
 		 */
 		var x=121.60462789141;
@@ -666,5 +678,4 @@
           map.panTo(point);  
           }, 2000); 
 </script>
-
 </body></html>
